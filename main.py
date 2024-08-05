@@ -1,7 +1,10 @@
+#!/usr/bin/env python3
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 
-data = pd.read_csv('vehicles.csv')
+if __name__ == '__main__':
+
+    data = pd.read_csv('vehicles.csv')
 
 def get_dom(dt):
 	return dt.day
