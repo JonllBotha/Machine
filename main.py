@@ -1,9 +1,7 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 
-train = pd.read_csv('vehicles.csv')
-
-train.head()
+data = pd.read_csv('vehicles.csv')
 
 def get_dom(dt):
 	return dt.day
@@ -27,27 +25,27 @@ def get_weekofyear(dt):
 	return dt.weekofyear
 
 
-train['DateTime'] = train['DateTime'].map(pd.to_datetime)
-train['date'] = train['DateTime'].map(get_dom)
-train['weekday'] = train['DateTime'].map(get_weekday)
-train['hour'] = train['DateTime'].map(get_hour)
-train['month'] = train['DateTime'].map(get_month)
-train['year'] = train['DateTime'].map(get_year)
-train['dayofyear'] = train['DateTime'].map(get_dayofyear)
-train['weekofyear'] = train['DateTime'].map(get_weekofyear)
+data['DateTime'] = data['DateTime'].map(pd.to_datetime)
+data['date'] = data['DateTime'].map(get_dom)
+data['weekday'] = data['DateTime'].map(get_weekday)
+data['hour'] = data['DateTime'].map(get_hour)
+data['month'] = data['DateTime'].map(get_month)
+data['year'] = data['DateTime'].map(get_year)
+data['dayofyear'] = data['DateTime'].map(get_dayofyear)
+data['weekofyear'] = data['DateTime'].map(get_weekofyear)
 
-train.head()
+data.head()
 
-train = train.drop(['DateTime'], axis=1)
+data = data.drop(['DateTime'], axis=1)
 
-train1 = train.drop(['Vehicles'], axis=1)
+data1 = data.drop(['Vehicles'], axis=1)
 
-target = train['Vehicles']
+target = data['Vehicles']
 
-print(train1.head())
+print(data1.head())
 target.head()
 
-m1=RandomForestRegressor()
+d1=RandomForestRegressor()
  
-m1.fit(train1,target)
-m1.predict([[5,30,8,19,2003,17,4]])
+d1.fit(data1,target)
+d1.predict([[5,30,8,19,2003,17,4]])
